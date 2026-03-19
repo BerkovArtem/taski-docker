@@ -149,7 +149,6 @@ jobs:
         with:
           context: ./gateway/
           push: true
-          # Тут вместо username должен быть ваш логин на Docker Hub
           tags: berkovartem/taski_gateway:latest
 
   deploy:
@@ -178,9 +177,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
-          # Параметр script передаёт в action appleboy/ssh-action команды,
-          # которые нужно выполнить на сервере, 
-          # с которым установлено соединение
           script: |
             cd taski
             sudo docker compose -f docker-compose.production.yml pull
